@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Research</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Chuliang Xiao</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="projects.html">
+    <span class="fa fa-globe"></span>
+     
+    Projects
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-desktop"></span>
+     
+    R Language
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="RGeospatial.html">Geospatial</a>
+    </li>
+    <li>
+      <a href="Hydrograph.html">Interactive Hydrograph</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="publication.html">
+    <span class="fa fa-university"></span>
+     
+    Publication
+  </a>
+</li>
+<li>
+  <a href="contact.html">
+    <span class="fa fa-info"></span>
+     
+    About
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-gear"></span>
+     
+    More
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Family</li>
+    <li>
+      <a href="family_China.html">Hometown in China</a>
+    </li>
+    <li>
+      <a href="family_xiao.html">Family</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Links</li>
+    <li>
+      <a href="https://ciglr.seas.umich.edu/people/chuliang-xiao/">U-M CIGLR</a>
+    </li>
+    <li>
+      <a href="https://www.glerl.noaa.gov/about/pers/profiles/xiao.html">NOAA GLERL</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/ChuliangXiao">
+    <span class="fa fa-question fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Research</h1>
+
+</div>
+
+
+<div id="wrf-hydro" class="section level3">
+<h3>WRF-Hydro</h3>
+<ul>
+<li><p>The implementation of the community Weather Research and Forecasting model hydrological extension package (WRF-Hydro) (<a href="https://ral.ucar.edu/projects/wrf_hydro/overview">Gochis et al. 2013</a>) in the Great Lakes region with collaborators from the National Center for Atmospheric Research (NCAR) supported by a newly granted NOAA Joint Technology Transfer Initiative (JTTI) project.</p></li>
+<li><p>Beginning in the summer of 2016, the NOAA <a href="http://water.noaa.gov">National Water Center (NWC)</a> in partnership with the National Centers for Environmental Prediction (NCEP), the National Center for Atmospheric Research (NCAR) and other academic partners will produce operational hydrologic predictions for the nation using a new National Water Model (NWM) that is based on WRF-Hydro. The WRF-Hydro modeling system is a physics-based, distributed hydrologic modeling system and has been used in several streamflow prediction applications in the U.S. and around the world. The modeling system provides users with a multi-physics and multi-scale modeling framework for representing a large range of terrestrial hydrologic processes such as infiltration, runoff, lateral flow, channel flow, soil moisture, snowpack, and evapotranspiration as well as various water management components.</p></li>
+<li><p>Because of lack of consistency of high-resolution terrain (also known as “geofabric”) data along the U.S. and Canada borders, the Great Lakes basin is not entirely included in the current version of NWM, leaving a substantial gap for applying the national model to the water-dominated region with the largest lake system on earth. Thus, a specific effort has been devoted to implementing the WRF-Hydro modeling system in the Great Lakes basin, including preparing high-resolution terrain datasets, parameterizing lakes and reservoirs, and calibrating the model.</p></li>
+</ul>
+</div>
+<div id="regional-cimate-modeling" class="section level3">
+<h3>Regional Cimate Modeling</h3>
+<ul>
+<li>The technique of <em>numerical modeling</em> has been applied to the meteorological field since the invention of general-purpose computers, i.e. computer simulation. As computers become more and more powerful, high-resolution simulations with more real and complex physical processes become feasible. Two efforts have been carried out to meet different needs, global climate models (GCMs) and regional climate models (RCMs).</li>
+</ul>
+<div id="wrf-lake" class="section level4">
+<h4>WRF-Lake</h4>
+<ul>
+<li>The lake module in WRF (original called LISSS, <a href="http://dx.doi.org/10.1029/2011MS000072">Subin et al. 2012</a>) was obtained from the Community Land Model version 4.5 with some modifications by <a href="http://dx.doi.org/10.1007/s10584-013-0978-y">Gu et al. (2015)</a>, based on the origional concept of <a href="http://dx.doi.org/10.1029/WR026i010p02603">Hostetler and Bartlein (1990)</a>, which performs quite well in shallow lakes (depth &lt; 50 m). (Incorporated in WRF since <a href="http://www2.mmm.ucar.edu/wrf/users/wrfv3.6/updates-3.6.html">v3.6</a>). Our work <a href="http://dx.doi.org/10.1002/2016JD025038">(Xiao et al. 2016)</a> further updated the lake module in WRF with the surface albedo scheme and vertical diffusivity to improve the lake surface temperature and lake ice simulation in the Great Lakes.</li>
+</ul>
+</div>
+<div id="wrf-dynamical-downscaling" class="section level4">
+<h4>WRF Dynamical Downscaling</h4>
+<ul>
+<li>As the largest group of fresh waterbodies on Earth, the Laurentian Great Lakes have significant influences on local and regional weather and climate through their unique physical features. Due to the limited spatial resolution of GCMs, the Great Lakes are not well represented in GCMs. Thus, the dynamical downscaling technique serves as a necessary and feasible solution in the water-dominated region. The <strong>Weather Research and Forecasting</strong> model (<a href="https://www.mmm.ucar.edu/weather-research-and-forecasting-model">WRF</a>) with an updated lake scheme is employed to downscale from a GCM, <a href="https://www.gfdl.noaa.gov/coupled-physical-model-cm3/">GFDL-CM3</a> (<a href="publication.html">Xiao et al. 2018</a>).</li>
+</ul>
+</div>
+<div id="water-level-projection" class="section level4">
+<h4>Water Level Projection</h4>
+<ul>
+<li>The WRF downscaling result is applied to a water-level model (Coordinated Great Lakes Regulation and Routing Model, <a href="https://www.glerl.noaa.gov/ahps/HunterWork/DraftManual_April2001.pdf">CGLRRM</a>) to project the future water level change of the Great Lakes.</li>
+</ul>
+</div>
+</div>
+<div id="climate-dynamics" class="section level3">
+<h3>Climate dynamics</h3>
+<ul>
+<li>Climate Dynamics. Since climate is determined by the interaction of the atmosphere, the oceans, the land surfaces, the cryosphere and the biosphere, climate dynamics is the field that studies the processes that control climate and how it evolves, contributing to our knowledge of the natural earth. As a main portion of my Ph.D. dissertation, regional climatology is the study of discrete and characteristic weather phenomena of a particular continental or subcontinental region to meet specific and sophisticated requirements. To understand the complex climate in East Asia, I started my research on the upper-level jet streams. The extratropical atmospheric general circulation on earth is characterized by the prevailing circumpolar westerlies, which drive the dominant west-to-east motion of the atmosphere in both hemispheres. In East Asia, two split jets are located at the southern and northern flanks of the Tibetan Plateau, namely the East Asian subtropical jet (EASJ) and East Asian polar front jet (EAPJ). Their concurrent variability can provide significant implications on the weather and climate anomalies in East Asia.</li>
+</ul>
+<div id="east-asian-jet-stream" class="section level4">
+<h4>East Asian Jet Stream</h4>
+<ul>
+<li>During my doctoral period, my specific research focused on East Asia. It was the first time a comprehensive study was carried out to investigate the phenomenon of double (subtropical and polar-front) jet streams in East Asia in terms of observational descriptions (<a href="http://dx.doi.org/10.3878/j.issn.1674-2834.12.0104">Zhang and Xiao 2013</a>, dynamical analyses (<a href="http://dx.doi.org/10.1002/2016JD025038">Xiao et al. 2016</a>), numerical modeling (Xiao and Zhang 2012](<a href="http://dx.doi.org/10.1007/s13351-012-0603-4" class="uri">http://dx.doi.org/10.1007/s13351-012-0603-4</a>), <a href="http://dx.doi.org/10.1007/s00376-012-2167-8">2013</a>), and future projections (<a href="http://dx.doi.org/10.1002/2015GL064641">Xiao et al. 2015</a>).</li>
+</ul>
+</div>
+</div>
+
+<br><br><br><br><br><br><br>
+<p>Copyright &copy; 2018 Chuliang Xiao.</p>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

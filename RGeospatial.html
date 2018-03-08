@@ -9,9 +9,11 @@
 <meta name="generator" content="pandoc" />
 
 
+<meta name="author" content="Chuliang Xiao" />
 
+<meta name="date" content="2018-02-23" />
 
-<title>Chuliang Xiao</title>
+<title>RSpatial-Mask</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -267,16 +269,79 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Chuliang Xiao</h1>
+<h1 class="title toc-ignore">RSpatial-Mask</h1>
+<h4 class="author"><em>Chuliang Xiao</em></h4>
+<h4 class="date"><em>February 23, 2018</em></h4>
 
 </div>
 
 
-<p>I am a postdoctoral research fellow at the University of Michigan’s <a href="http://ciglr.seas.umich.edu">Cooperative Institute for Great Lakes Research (CIGLR)</a> working at the National Oceanic and Atmospheric Administration (NOAA) <a href="http://glerl.noaa.gov">Great Lakes Environmental Research Laboratory (GLERL)</a> in Ann Arbor, Michigan. My fields of specialization include research on hydroclimatology and climate change in the Great Lakes region using regional numerical models (<a href="https://www.mmm.ucar.edu/weather-research-and-forecasting-model">WRF</a> and <a href="https://ral.ucar.edu/projects/wrf_hydro/overview">WRF-Hydro</a>).</p>
-<p>As a modeler in Atmospheric Sciences, I am dealing with “Big Meteorological Data” from in-situ observation stations, buoys, radars, satellites, and mostly numerical models. Specifically, I employ a sophisticated regional climate model to conduct long-term simulations and projections of the hydroclimatology in Great Lakes region in terms of precipitation, temperature, ice coverage, river discharge, lake level, etc, with post-processing done by using analysis and visualization programming tools (e.g. <em>NCL</em>, <em>R</em> and <em>Python</em>).</p>
-<div class="figure">
-<img src="AvatarAGU2014.jpg" alt="With Sir Brian J. Hoskins at AGU2014 Seattle" />
-<p class="caption">With Sir Brian J. Hoskins at AGU2014 Seattle</p>
+<p>The script shows a R example of geospatial masking in the Maumee River basin, plotting precipitation of a gridded Lambert netCDF file with a watershed in polygon shapefile on Google Map.</p>
+<div id="library" class="section level3">
+<h3>Library</h3>
+<pre class="r"><code>xlib  &lt;- c(&quot;tidyverse&quot;,&quot;ncdf4&quot;,&quot;raster&quot;, &quot;ggmap&quot;, &quot;rgdal&quot;, &quot;rgeos&quot;)
+lib   &lt;- lapply(xlib, library, character.only = TRUE) # load the required packages</code></pre>
+</div>
+<div id="read-gridded-netcdf-file" class="section level3">
+<h3>Read gridded NetCDF file</h3>
+<pre class="r"><code>geoFile &lt;- &quot;P:/ipemf/wrf/HydroMaumee/geo_em.d02.nc&quot;
+fname   &lt;- paste0(&quot;P:/ipemf/wrf/HydroMaumee/Precip/&quot;, &quot;201401010000.PRECIP_FORCING.nc&quot;)
+fnc     &lt;- nc_open(fname)</code></pre>
+</div>
+<div id="get-coordinate" class="section level3">
+<h3>Get Coordinate</h3>
+<pre class="r"><code>lon &lt;- ncvar_get(fnc, varid = &quot;lon&quot;)
+lat &lt;- ncvar_get(fnc, varid = &quot;lat&quot;)
+# get varaible precipitation rate
+PR  &lt;- ncvar_get(fnc, varid = &quot;precip_rate&quot;)</code></pre>
+</div>
+<div id="get-projection" class="section level3">
+<h3>Get Projection</h3>
+<pre class="r"><code>library(rwrfhydro)
+proj4 &lt;- GetProj(geoFile) </code></pre>
+</div>
+<div id="assign-coordinates" class="section level3">
+<h3>Assign coordinates</h3>
+<pre class="r"><code>spPR              &lt;- data.frame(lon = as.vector(lon), lat = as.vector(lat), conc = as.vector(PR))
+coordinates(spPR) &lt;- ~ lon+lat
+proj4string(spPR) = CRS(proj4)</code></pre>
+</div>
+<div id="rasterization" class="section level3">
+<h3>Rasterization</h3>
+<pre class="r"><code>r             &lt;- raster(ncols = ncol(lat),nrows = nrow(lat))
+extent(r)     &lt;- extent(spPR)
+rPR           &lt;- rasterize(coordinates(spPR), r, spPR$conc)</code></pre>
+</div>
+<div id="read-maumee-river-shapfile" class="section level3">
+<h3>Read Maumee River Shapfile</h3>
+<pre class="r"><code>rMaumee       &lt;- readOGR(dsn = &quot;P:/ipemf/wrf/HydroMaumee/MaumeeRiverShapefile&quot;, layer = &quot;Maumee_Output&quot;)</code></pre>
+<pre><code>## OGR data source with driver: ESRI Shapefile 
+## Source: &quot;P:/ipemf/wrf/HydroMaumee/MaumeeRiverShapefile&quot;, layer: &quot;Maumee_Output&quot;
+## with 1 features
+## It has 35 fields
+## Integer64 fields read as strings:  OBJECTID GLHDID HydroID COMID WBAREACOMI FCODE GNIS_NBR STRAHLER SHREVE</code></pre>
+<pre class="r"><code>rMaumee.proj  &lt;- spTransform(rMaumee, CRSobj = CRS(proj4string(rPR)))</code></pre>
+</div>
+<div id="plot-raster-layers-and-add-maumee-polygon" class="section level3">
+<h3>Plot raster layers and add Maumee polygon</h3>
+<pre class="r"><code>#par(mar = c(0.1, 0.1, 0.1, 0.1 ))
+plot(rPR*1e4, asp = 1)
+plot(rMaumee.proj, add = T)</code></pre>
+<p><img src="RGeospatial_files/figure-html/unnamed-chunk-8-1.png" width="912" /> ### Raster to Polygon</p>
+<pre class="r"><code>r   &lt;- projectRaster(rPR, crs = CRS(&quot;+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs&quot;))
+rtp &lt;- rasterToPolygons(r)</code></pre>
+</div>
+<div id="google-basemap" class="section level3">
+<h3>Google Basemap</h3>
+<pre class="r"><code>bm &lt;- ggmap(get_map(location = bbox(rtp)))
+bm +  geom_polygon(data = rtp,
+                   aes(x = long, y = lat, group = group, 
+                       fill = rep(rtp$layer*1e4, each = 5)), 
+                   size = 0, 
+                   alpha = 0.5)  + 
+  scale_fill_gradientn(expression(&quot;PR\n&quot;~10^{-4}), 
+                       colors = topo.colors(255)) </code></pre>
+<p><img src="RGeospatial_files/figure-html/unnamed-chunk-10-1.png" width="912" /></p>
 </div>
 
 <br><br><br><br><br><br><br>
